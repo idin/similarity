@@ -2,6 +2,7 @@ import numpy as np
 
 from .get_string_similarity import get_string_similarity
 
+
 def get_sentence_distance(words1, words2, first_char_weight=0, case_sensitivity=1, method='jaro_winkler'):
 	"""
 	:type words1: list[str] or str
@@ -72,14 +73,14 @@ def get_sentence_similarity(
 		words1=words1, words2=words2, method=method,
 		case_sensitivity=case_sensitivity, first_char_weight=first_char_weight
 	)
-	if len(words1)==0 and len(words2)==0:
+	if len(words1) == 0 and len(words2) == 0:
 		return 1.0
-	elif len(words1)==0 or len(words2)==0:
+	elif len(words1) == 0 or len(words2) == 0:
 		return 0.0
 
 	similarity = 1 - distance/max(len(words1), len(words2))
 
-	if first_word_weight==0:
+	if first_word_weight == 0:
 		return similarity
 	elif first_word_weight<0:
 		raise ValueError('first_word_weight cannot be negative!')
